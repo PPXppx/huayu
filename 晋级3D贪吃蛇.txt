@@ -1,0 +1,187 @@
+#include <iostream>
+#include<stdio.h>
+#include <ctime>
+#include<conio.h>
+#include <windows.h>
+#include <cstdlib>
+#include <stdlib.h>
+using namespace std; 
+int main() 
+{
+	int x,y,x1,y1;
+	int s1[25]={0};//×Ý×ø±ê 
+	int s2[25]={0};//ºá×ø±ê 
+	s1[0]=2;s1[1]=2;s1[2]=2;s1[3]=2;s1[4]=2;
+	s2[0]=11;s2[1]=12;s2[2]=13;s2[3]=14;s2[4]=15;
+	double random(double,double);
+		srand(unsigned(time(0)));
+		x=random(5,25);
+		y=random(5,25);
+		char p='d';
+		char pp;
+		system("color 2F");
+	while(1)
+ 	{
+ Sleep(100);
+ 	if(kbhit()!=0)
+ 	{
+ 		p=getch();
+	}
+		/*if(pp=='d'&&p=='a');
+		{
+			p=pp;
+		}
+		if(pp=='a'&&p=='d');
+		{
+			p=pp;
+		}
+		if(pp=='w'&&p=='s');
+		{
+			p=pp;
+		}
+		if(pp=='s'&&p=='w');
+		{
+			p=pp;
+		}
+		if(pp=='q'&&p=='e');
+		{
+			p=pp;
+		}
+		if(pp=='e'&&p=='q');
+		{
+			p=pp;
+		}*/
+		system("Cls");
+		int i1;
+		for(i1=0;i1<=20;i1++)
+		{
+			if(s1[i1]==0)
+			   break;
+		}
+		i1=i1-1;
+		if(p=='d')
+		{
+			x1=s2[0];y1=s1[0];
+			for(int t=0;t<i1;t++ )
+			{
+				s1[t]=s1[t+1];
+				s2[t]=s2[t+1];
+			}
+			s2[i1]++;
+		}
+		if(p=='s')
+		{
+			x1=s2[0];y1=s1[0];
+			for(int t=0;t<i1;t++ )
+			{
+				s1[t]=s1[t+1];
+				s2[t]=s2[t+1];
+			}
+			s1[i1]++;
+		}
+		if(p=='a')
+		{
+			x1=s2[0];y1=s1[0];
+			for(int t=0;t<i1;t++ )
+			{
+				s1[t]=s1[t+1];
+				s2[t]=s2[t+1];
+			}
+			s2[i1]--;
+		}
+		if(p=='w')
+		{
+			x1=s2[0];y1=s1[0];
+			for(int t=0;t<i1;t++ )
+			{
+				s1[t]=s1[t+1];
+				s2[t]=s2[t+1];
+			}
+			s1[i1]--;
+		}
+		if(p=='z')
+		{
+			x1=s2[0];y1=s1[0];
+			for(int t=0;t<i1;t++ )
+			{
+				s1[t]=s1[t+1];
+				s2[t]=s2[t+1];
+			}
+			s2[i1]--;
+			s1[i1]++;
+		}
+		if(p=='e')
+		{
+			x1=s2[0];y1=s1[0];
+			for(int t=0;t<i1;t++ )
+			{
+				s1[t]=s1[t+1];
+				s2[t]=s2[t+1];
+			}
+			s1[i1]--;
+			s2[i1]++;
+		}
+		for(int t=1;t<=30;t++)
+		{
+			for(int i=1;i<=50;i++)
+			{
+			    int r=0;
+				for(int n=0;n<=i1;n++)
+				{
+					
+					if(s1[n]==t&&s2[n]==i)
+					{
+					    r=1;
+						cout<<"*";
+						break;
+					}
+					
+				}
+				if(r==1)
+				continue;
+					
+				if(t==y&&i==x)
+					{
+						cout<<"*";
+						continue;
+					}
+				if(((i>=10)&&(i<=30)&&t==1)||(t==10&&i>=1&&i<=20)||((t>=20)&&(t<=20)&&i>=10&&i<=30)||((t>=30)&&(t<=30)&&i>=1&&i<=20))
+					{
+						cout<<"-";
+						continue;
+					}
+					if(((t>=1)&&(t<=10)&&i<=10&&(t+i==11))||((t>=1)&&(t<=10)&&i>=20&&i<=30&&i+t==30)||((t>=20)&&(t<=30)&&i>=1&&i<=10&&i+t==30)||((t>=20)&&(t<=30)&&i>=20&&i<=30&&(i+t==50)))
+					{
+						cout<<"/";
+						continue;
+					}
+				if(((t>=1)&&(t<=20)&&i==10)||((t>=1)&&(t<=20)&&i==30)||((t>=10)&&(t<=30)&&i==1)||((t>=10)&&(t<=30)&&i==20))
+					{
+						cout<<"|";
+						continue;
+					}
+				cout<<" ";
+			}	
+			cout<<endl;
+		 }      
+		if(s1[i1]==y&&s2[i1]==x)
+		{
+			for(int t=0;t<=i1;t++)
+			{
+				s1[i1+1-t]=s1[i1-t];
+				s2[i1+1-t]=s2[i1-t];
+			}
+			s1[0]=y1;
+			s2[0]=x1;
+			x=random(5,25);
+		    y=random(5,25);	
+		}
+		pp=p;
+	}
+
+return 0; 
+}
+double random(double start, double end)
+{
+return start+(end-start)*rand()/(RAND_MAX + 1.0);
+}
